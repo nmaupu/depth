@@ -34,6 +34,7 @@ func (p *Pkg) Resolve(i Importer) {
 	if name == "" {
 		return
 	}
+	fmt.Printf("Resolving package p=%s\n", name)
 
 	// Stop resolving imports if we've reached max depth or found a duplicate.
 	var importMode build.ImportMode
