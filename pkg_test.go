@@ -13,7 +13,7 @@ func TestPkg_CleanName(t *testing.T) {
 	}{
 		{"strings", "strings"},
 		{"net/http", "net/http"},
-		{"github.com/KyleBanks/depth", "github.com/KyleBanks/depth"},
+		{"github.com/nmaupu/depth", "github.com/nmaupu/depth"},
 		{"C", ""},
 		{"golang_org/x/anything", "vendor/golang_org/x/anything"},
 	}
@@ -63,11 +63,11 @@ func TestPkg_AddDepImportSeen(t *testing.T) {
 func TestByInternalAndName(t *testing.T) {
 	pkgs := []Pkg{
 		Pkg{Internal: true, Name: "net/http"},
-		Pkg{Internal: false, Name: "github.com/KyleBanks/depth"},
+		Pkg{Internal: false, Name: "github.com/nmaupu/depth"},
 		Pkg{Internal: true, Name: "strings"},
-		Pkg{Internal: false, Name: "github.com/KyleBanks/commuter"},
+		Pkg{Internal: false, Name: "github.com/nmaupu/commuter"},
 	}
-	expected := []string{"net/http", "strings", "github.com/KyleBanks/commuter", "github.com/KyleBanks/depth"}
+	expected := []string{"net/http", "strings", "github.com/nmaupu/commuter", "github.com/nmaupu/depth"}
 
 	sort.Sort(byInternalAndName(pkgs))
 

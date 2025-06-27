@@ -1,18 +1,18 @@
-# depth 
+# depth
 
-[![GoDoc](https://godoc.org/github.com/KyleBanks/depth?status.svg)](https://godoc.org/github.com/KyleBanks/depth)&nbsp; 
-[![Build Status](https://travis-ci.org/KyleBanks/depth.svg?branch=master)](https://travis-ci.org/KyleBanks/depth)&nbsp;
-[![Go Report Card](https://goreportcard.com/badge/github.com/KyleBanks/depth)](https://goreportcard.com/report/github.com/KyleBanks/depth)&nbsp;
-[![Coverage Status](https://coveralls.io/repos/github/KyleBanks/depth/badge.svg?branch=master)](https://coveralls.io/github/KyleBanks/depth?branch=master)
+[![GoDoc](https://godoc.org/github.com/nmaupu/depth?status.svg)](https://godoc.org/github.com/nmaupu/depth)&nbsp;
+[![Build Status](https://travis-ci.org/nmaupu/depth.svg?branch=master)](https://travis-ci.org/nmaupu/depth)&nbsp;
+[![Go Report Card](https://goreportcard.com/badge/github.com/nmaupu/depth)](https://goreportcard.com/report/github.com/nmaupu/depth)&nbsp;
+[![Coverage Status](https://coveralls.io/repos/github/nmaupu/depth/badge.svg?branch=master)](https://coveralls.io/github/nmaupu/depth?branch=master)
 
 `depth` is tool to retrieve and visualize Go source code dependency trees.
 
 ## Install
 
-Download the appropriate binary for your platform from the [Releases](https://github.com/KyleBanks/depth/releases) page, or:
+Download the appropriate binary for your platform from the [Releases](https://github.com/nmaupu/depth/releases) page, or:
 
 ```sh
-go get github.com/KyleBanks/depth/cmd/depth
+go get github.com/nmaupu/depth/cmd/depth
 ```
 
 ## Usage
@@ -24,8 +24,8 @@ go get github.com/KyleBanks/depth/cmd/depth
 Simply execute `depth` with one or more package names to visualize. You can use the fully qualified import path of the package, like so:
 
 ```sh
-$ depth github.com/KyleBanks/depth/cmd/depth
-github.com/KyleBanks/depth/cmd/depth
+$ depth github.com/nmaupu/depth/cmd/depth
+github.com/nmaupu/depth/cmd/depth
   ├ encoding/json
   ├ flag
   ├ fmt
@@ -33,7 +33,7 @@ github.com/KyleBanks/depth/cmd/depth
   ├ log
   ├ os
   ├ strings
-  └ github.com/KyleBanks/depth
+  └ github.com/nmaupu/depth
     ├ fmt
     ├ go/build
     ├ path
@@ -68,7 +68,7 @@ strings
 Visualizing multiple packages at a time is supported by simply naming the packages you'd like to visualize:
 
 ```sh
-$ depth strings github.com/KyleBanks/depth 
+$ depth strings github.com/nmaupu/depth
 strings
   ├ errors
   ├ internal/bytealg
@@ -78,7 +78,7 @@ strings
   ├ unicode/utf8
   └ unsafe
 7 dependencies (7 internal, 0 external, 0 testing).
-github.com/KyleBanks/depth
+github.com/nmaupu/depth
   ├ bytes
   ├ errors
   ├ go/build
@@ -132,13 +132,13 @@ strings
 18 dependencies (18 internal, 0 external, 0 testing).
 ```
 
-#### `-max` 
+#### `-max`
 
 The `-max` flag limits the dependency tree to the maximum depth provided. For example, if you supply `-max 1` on the `depth` package, your output would look like so:
 
 ```
-$ depth -max 1 github.com/KyleBanks/depth/cmd/depth
-github.com/KyleBanks/depth/cmd/depth
+$ depth -max 1 github.com/nmaupu/depth/cmd/depth
+github.com/nmaupu/depth/cmd/depth
   ├ encoding/json
   ├ flag
   ├ fmt
@@ -146,7 +146,7 @@ github.com/KyleBanks/depth/cmd/depth
   ├ log
   ├ os
   ├ strings
-  └ github.com/KyleBanks/depth
+  └ github.com/nmaupu/depth
 7 dependencies (6 internal, 1 external, 0 testing).
 ```
 
@@ -182,9 +182,9 @@ The `-explain` flag instructs `depth` to print import chains in which the
 `target-package` is found:
 
 ```sh
-$ depth -explain strings github.com/KyleBanks/depth/cmd/depth
-github.com/KyleBanks/depth/cmd/depth -> strings
-github.com/KyleBanks/depth/cmd/depth -> github.com/KyleBanks/depth -> strings
+$ depth -explain strings github.com/nmaupu/depth/cmd/depth
+github.com/nmaupu/depth/cmd/depth -> strings
+github.com/nmaupu/depth/cmd/depth -> github.com/nmaupu/depth -> strings
 ```
 
 #### `-json`
@@ -192,9 +192,9 @@ github.com/KyleBanks/depth/cmd/depth -> github.com/KyleBanks/depth -> strings
 The `-json` flag instructs `depth` to output dependencies in JSON format:
 
 ```sh
-$ depth -json github.com/KyleBanks/depth/cmd/depth
+$ depth -json github.com/nmaupu/depth/cmd/depth
 {
-  "name": "github.com/KyleBanks/depth/cmd/depth",
+  "name": "github.com/nmaupu/depth/cmd/depth",
   "deps": [
     {
       "name": "encoding/json",
@@ -203,7 +203,7 @@ $ depth -json github.com/KyleBanks/depth/cmd/depth
     },
     ...
     {
-      "name": "github.com/KyleBanks/depth",
+      "name": "github.com/nmaupu/depth",
       "internal": false,
       "deps": [
         {
@@ -223,7 +223,7 @@ $ depth -json github.com/KyleBanks/depth/cmd/depth
 The `depth` package can easily be used to retrieve the dependency tree for a particular package in your own project. For example, here's how you would retrieve the dependency tree for the `strings` package:
 
 ```go
-import "github.com/KyleBanks/depth"
+import "github.com/nmaupu/depth"
 
 var t depth.Tree
 err := t.Resolve("strings")
@@ -232,13 +232,13 @@ if err != nil {
 }
 
 // Output: "'strings' has 4 dependencies."
-log.Printf("'%v' has %v dependencies.", t.Root.Name, len(t.Root.Deps)) 
+log.Printf("'%v' has %v dependencies.", t.Root.Name, len(t.Root.Deps))
 ```
 
 For additional customization, simply set the appropriate flags on the `Tree` before resolving:
 
 ```go
-import "github.com/KyleBanks/depth"
+import "github.com/nmaupu/depth"
 
 t := depth.Tree {
   ResolveInternal: true,
