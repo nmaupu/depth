@@ -2,6 +2,7 @@ package depth
 
 import (
 	"bytes"
+	"fmt"
 	"go/build"
 	"path"
 	"sort"

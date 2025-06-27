@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/KyleBanks/depth"
+	"github.com/nmaupu/depth"
 )
 
 func Test_parse(t *testing.T) {
@@ -19,7 +19,7 @@ func Test_parse(t *testing.T) {
 		{false, false, 10, false, ""},
 		{true, false, 10, false, ""},
 		{false, true, 5, true, ""},
-		{false, true, 5, true, "github.com/KyleBanks/depth"},
+		{false, true, 5, true, "github.com/nmaupu/depth"},
 		{false, true, 5, true, ""},
 	}
 
@@ -89,16 +89,16 @@ func Example_handlePkgsTestStrings() {
 func Example_handlePkgsDepth() {
 	var t depth.Tree
 
-	handlePkgs(&t, []string{"github.com/KyleBanks/depth/cmd/depth"}, false, "")
+	handlePkgs(&t, []string{"github.com/nmaupu/depth/cmd/depth"}, false, "")
 	// Output:
-	// github.com/KyleBanks/depth/cmd/depth
+	// github.com/nmaupu/depth/cmd/depth
 	//   ├ encoding/json
 	//   ├ flag
 	//   ├ fmt
 	//   ├ io
 	//   ├ os
 	//   ├ strings
-	//   └ github.com/KyleBanks/depth
+	//   └ github.com/nmaupu/depth
 	//     ├ bytes
 	//     ├ errors
 	//     ├ go/build
@@ -177,8 +177,8 @@ func Example_handlePkgsJson() {
 func Example_handlePkgsExplain() {
 	var t depth.Tree
 
-	handlePkgs(&t, []string{"github.com/KyleBanks/depth/cmd/depth"}, false, "strings")
+	handlePkgs(&t, []string{"github.com/nmaupu/depth/cmd/depth"}, false, "strings")
 	// Output:
-	// github.com/KyleBanks/depth/cmd/depth -> strings
-	// github.com/KyleBanks/depth/cmd/depth -> github.com/KyleBanks/depth -> strings
+	// github.com/nmaupu/depth/cmd/depth -> strings
+	// github.com/nmaupu/depth/cmd/depth -> github.com/nmaupu/depth -> strings
 }

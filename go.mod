@@ -1,3 +1,3 @@
-module github.com/KyleBanks/depth
+module github.com/nmaupu/depth
 
-go 1.17
+go 1.24.3
